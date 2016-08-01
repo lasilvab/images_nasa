@@ -3,6 +3,8 @@ package silvanet.com.mx.imagine_space;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import data.ApodService;
 import data.Data;
@@ -12,11 +14,22 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
+    private ImageView image;
+    private TextView copyright;
+    private TextView title;
+    private TextView text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        image = (ImageView) findViewById(R.id.image);
+        copyright = (TextView) findViewById(R.id.copyright);
+        copyright = (TextView) findViewById(R.id.title);
+        copyright = (TextView) findViewById(R.id.text);
+        
+
 
 
         ApodService apodService = Data.getRetrofitInstance().create(ApodService.class);
