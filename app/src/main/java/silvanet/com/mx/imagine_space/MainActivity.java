@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import data.ApodService;
 import data.Data;
 import model.Apod;
@@ -15,7 +17,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView image;
-    private TextView copyright;
+    private TextView copy_right;
     private TextView title;
     private TextView text;
 
@@ -25,11 +27,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         image = (ImageView) findViewById(R.id.image);
-        copyright = (TextView) findViewById(R.id.copyright);
-        copyright = (TextView) findViewById(R.id.title);
-        copyright = (TextView) findViewById(R.id.text);
-        
-
+        copy_right = (TextView) findViewById(R.id.copy_right);
+        title = (TextView) findViewById(R.id.title);
+        text = (TextView) findViewById(R.id.text);
 
 
         ApodService apodService = Data.getRetrofitInstance().create(ApodService.class);
@@ -43,6 +43,12 @@ public class MainActivity extends AppCompatActivity {
        callApodService.enqueue(new Callback<Apod>() {
            @Override
            public void onResponse(Call<Apod> call, Response<Apod> response) {
+               Picasso.with(getApplicationContext()).load(response.body().getUrl()).into(image);
+               copy_right.setText(response.body().getCopyright());
+               title.setText(response.body().getTitle().toString());
+               text.setText(response.body().getExplanation().toString());
+
+
                //Log.d("APOD", response.body().getTitle());
            }
 
