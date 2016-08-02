@@ -17,7 +17,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     private ImageView image;
-    private TextView copy_right;
+    private TextView date;
     private TextView title;
     private TextView text;
 
@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         image = (ImageView) findViewById(R.id.image);
-        copy_right = (TextView) findViewById(R.id.copy_right);
+        date = (TextView) findViewById(R.id.date);
         title = (TextView) findViewById(R.id.title);
         text = (TextView) findViewById(R.id.text);
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onResponse(Call<Apod> call, Response<Apod> response) {
                Picasso.with(getApplicationContext()).load(response.body().getUrl()).into(image);
-               copy_right.setText(response.body().getCopyright());
+               date.setText(response.body().getDate().toString());
                title.setText(response.body().getTitle().toString());
                text.setText(response.body().getExplanation().toString());
 
