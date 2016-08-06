@@ -19,9 +19,12 @@ import silvanet.com.mx.imagine_space.R;
  */
 public class NasaApodAdapter extends RecyclerView.Adapter<NasaApodViewHolder> {
 
-    private List<Photo> apods;
+    //private List<Photo> apods;
+    private List<Photo> marsPhotos;
+    private OnItemClickListener onItemClickListener;
 
-    public NasaApodAdapter (List<Photo> apods) { this.apods = apods; }
+    public NasaApodAdapter(){}
+    public NasaApodAdapter (List<Photo> apods) { this.marsPhotos = apods; }
 
     @Override
     public NasaApodViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -30,7 +33,7 @@ public class NasaApodAdapter extends RecyclerView.Adapter<NasaApodViewHolder> {
 
     @Override
     public void onBindViewHolder(NasaApodViewHolder holder, int position) {
-        Photo photo = apods.get(position);
+        Photo photo = marsPhotos.get(position);
 
         //Picasso.with(holder.Image.getContext()).load(photo.getImgSrc()).into(holder.Image);
 
@@ -38,11 +41,25 @@ public class NasaApodAdapter extends RecyclerView.Adapter<NasaApodViewHolder> {
         holder.Image.setImageURI(photo.getImgSrc());
         holder.Title.setText(photo.getEarthDate());
 
+        holder.setItemClick(photo,onItemClickListener);
 
+    }
+
+    public void setOnItemClickListener(OnItemClickListener onItemClickListener){
+        this.onItemClickListener = onItemClickListener;
+    }
+
+    public void setMarsPhotos(List<Photo> marsPhotos){
+        this.marsPhotos = marsPhotos;
     }
 
     @Override
     public int getItemCount() {
-        return apods.size();
+        //return apods.size();
+        return marsPhotos !=null? marsPhotos.size():0;
+    }
+
+    public interface OnItemClickListener {
+        void OnItemClick(Photo photo);
     }
 }

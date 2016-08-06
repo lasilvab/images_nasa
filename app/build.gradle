@@ -22,7 +22,7 @@ android {
             //SignigConfig SignigConfig.release
         }
         debug {
-            minifyEnabled false
+            minifyEnabled true
             buildConfigField "String", "URL", "\"https://api.nasa.gov\""
         }
     }

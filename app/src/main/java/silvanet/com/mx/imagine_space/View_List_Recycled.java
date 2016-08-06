@@ -18,6 +18,7 @@ import data.ApodService;
 import data.Data;
 import model.Apod;
 import model.MarsRoverPhotos;
+import model.Photo;
 import model.Rover;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -41,7 +42,16 @@ public class View_List_Recycled extends AppCompatActivity{
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(10,StaggeredGridLayoutManager.VERTICAL);
 
-        RoverList.setLayoutManager(linearLayoutManager);
+        RoverList.setLayoutManager(gridLayoutManager);
+
+        final NasaApodAdapter nasaApodAdapter = new NasaApodAdapter();
+        nasaApodAdapter.setOnItemClickListener(new NasaApodAdapter.OnItemClickListener(){
+
+            @Override
+            public void OnItemClick(Photo photo) {
+                Log.d("MY PHOTO",photo.getImgSrc());
+            }
+        });
 
         ApodService apodService = Data.getRetrofitInstance().create(ApodService.class);
 
@@ -50,7 +60,11 @@ public class View_List_Recycled extends AppCompatActivity{
         callMarsRoverPhotos.enqueue(new Callback<MarsRoverPhotos>() {
             @Override
             public void onResponse(Call<MarsRoverPhotos> call, Response<MarsRoverPhotos> response) {
-                RoverList.setAdapter(new NasaApodAdapter(response.body().getPhotos()));
+
+                //RoverList.setAdapter(new NasaApodAdapter(response.body().getPhotos()));
+                nasaApodAdapter.setMarsPhotos(response.body().getPhotos());
+                RoverList.setAdapter(nasaApodAdapter);
+
 
                 //Log.d("IMAGEN",response.body().getPhotos().get(0).getImgSrc().toString());
             }
