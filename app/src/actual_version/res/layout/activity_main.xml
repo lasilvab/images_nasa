@@ -43,4 +43,10 @@
         android:layout_below="@+id/title"
         android:text="Text" />
 
+    <Button
+        android:id="@+id/envia_recycler"
+        android:text="Ir a Vista Recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>
