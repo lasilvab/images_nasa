@@ -33,6 +33,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import silvanet.com.mx.imagine_space.ApodViewHolder.NasaApodAdapter;
 import silvanet.com.mx.imagine_space.app.ActivityDetail;
+import silvanet.com.mx.imagine_space.fragments.FragmentListing;
+import silvanet.com.mx.imagine_space.fragments.FragmentToday;
 
 /**
  * Created by LuisAlfredoSilva on 05/08/2016.
@@ -59,15 +61,16 @@ public class View_List_Recycled extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
-                switch (item.getGroupId()){
+                switch (item.getItemId()){
                     case R.id.today_item:
-                        //Snackbar.make()
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentToday()).commit();
                         break;
                     case R.id.masr_rover_item:
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentListing()).commit();
                         break;
                     case R.id.favorite_item:
                         Snackbar.make(findViewById(android.R.id.content),"Favorites",Snackbar.LENGTH_SHORT).show();
-                        return true;
+                        break;
                 }
                 return false;
             }
