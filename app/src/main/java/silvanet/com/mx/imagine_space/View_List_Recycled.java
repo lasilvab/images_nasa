@@ -1,6 +1,9 @@
 package silvanet.com.mx.imagine_space;
 
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
@@ -12,13 +15,24 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.squareup.picasso.Picasso;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -54,6 +68,23 @@ public class View_List_Recycled extends AppCompatActivity{
         //setContentView(R.layout.recycled_view_list);
         //Librería Butter Knife
         ButterKnife.bind(this);
+
+        /* Código para generar el Hasskey de facebook
+
+        try {
+            PackageInfo info = getPackageManager().getPackageInfo("silvanet.com.mx.imagine_space",PackageManager.GET_SIGNATURES);
+            for (Signature signature : info.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
+                }
+            } catch (PackageManager.NameNotFoundException e) {
+
+            } catch (NoSuchAlgorithmException e) {
+
+            }
+        */
+
 
         setSupportActionBar(toolbar);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -133,5 +164,26 @@ public class View_List_Recycled extends AppCompatActivity{
 
             }
         }); */
+    }
+
+    private void getFBUserInfo(){
+        GraphRequest request=GraphRequest.newMeRequest(AccessToken.getCurrentAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+            @Override
+            public void onCompleted(JSONObject object, GraphResponse response) {
+                try {
+                    SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.image_navigation);
+                    userImage.setImageURI("http://graph.facebook.com/"+object.get("id")+"picture?type=large");
+                    TextView userName = (TextView) findViewById(R.id.text_navigation);
+                    userName.setText(object.getString("name"));
+
+
+                    //Log.d("name",object.getString("name"));
+                    //Log.d("id",object.getString("id"));
+                } catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        request.executeAsync();
     }
 }

@@ -2,6 +2,7 @@ package silvanet.com.mx.imagine_space.app;
 
 import android.app.Application;
 
+import com.facebook.FacebookSdk;
 import com.facebook.drawee.backends.pipeline.Fresco;
 
 /**
@@ -13,5 +14,6 @@ public class NasaAplication extends Application{
     public void onCreate() {
         super.onCreate();
         Fresco.initialize(this);
+        FacebookSdk.sdkInitialize(this);
     }
 }

@@ -28,7 +28,7 @@ public class ActivityDetail extends AppCompatActivity {
         setContentView(R.layout.activity_datail);
         ButterKnife.bind(this);
 
-        Photo photo = (Photo) getIntent().getExtras().getSerializable("photopar");
+        Photo photo = (Photo) getIntent().getExtras().getSerializable("photo");
         Id.setText(photo.getId());
         Full_Name.setText(photo.getCamera().getFullName());
         Image.setImageURI(photo.getImgSrc());
