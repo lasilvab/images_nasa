@@ -5,7 +5,9 @@ package model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Camera_Secundary {
+import java.io.Serializable;
+
+public class Camera_Secundary implements Serializable{
 
     @SerializedName("name")
     @Expose

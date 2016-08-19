@@ -28,11 +28,11 @@ public class ActivityDetail extends AppCompatActivity {
         setContentView(R.layout.activity_datail);
         ButterKnife.bind(this);
 
-        Photo photo = (Photo) getIntent().getExtras().getSerializable("photo");
-        Id.setText(photo.getId());
-        Full_Name.setText(photo.getCamera().getFullName());
+        Photo photo = (Photo) getIntent().getExtras().getSerializable("photopar");
+        Id.setText("Id: " + photo.getId().toString());
+        Full_Name.setText("Full Name: " + photo.getCamera().getFullName());
         Image.setImageURI(photo.getImgSrc());
-        Date.setText(photo.getEarthDate());
+        Date.setText("Date: " + photo.getEarthDate());
 
     }
 }

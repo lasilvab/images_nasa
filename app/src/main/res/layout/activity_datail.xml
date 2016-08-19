@@ -8,7 +8,7 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_detail"
         android:theme="@style/AppTheme"
-        android:background="?colorPrimary"
+        android:background="?colorPrimaryDark"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize" />
 
@@ -16,6 +16,10 @@
         android:id="@+id/item_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/colorBlue"
         android:text="Id"/>
 
     <TextView
@@ -24,14 +28,14 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textSize="20dp"
-        android:textColor="#FF4081"
+        android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:text="Full Name"/>
 
     <com.facebook.drawee.view.SimpleDraweeView
         android:id="@+id/item_image"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         fresco:actualImageScaleType="fitXY"/>
 
@@ -39,6 +43,10 @@
         android:id="@+id/item_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textColor="@color/colorGreen"
+        android:textSize="23dp"
+        android:textStyle="bold"
         android:text="Date"/>
 
 </LinearLayout>

@@ -4,7 +4,9 @@ package model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Camera {
+import java.io.Serializable;
+
+public class Camera implements Serializable {
 
     @SerializedName("id")
     @Expose

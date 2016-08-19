@@ -87,6 +87,7 @@ public class View_List_Recycled extends AppCompatActivity{
 
 
         setSupportActionBar(toolbar);
+        getFBUserInfo();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
 
             @Override
@@ -172,7 +173,7 @@ public class View_List_Recycled extends AppCompatActivity{
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
                     SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.image_navigation);
-                    userImage.setImageURI("http://graph.facebook.com/"+object.get("id")+"picture?type=large");
+                    userImage.setImageURI("http://graph.facebook.com/"+object.getString("id")+"/picture?type=large");
                     TextView userName = (TextView) findViewById(R.id.text_navigation);
                     userName.setText(object.getString("name"));
 

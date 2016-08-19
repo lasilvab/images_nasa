@@ -27,7 +27,11 @@
 
         <activity android:name=".View_List_Recycled">
 
-    </activity>
+        </activity>
+
+        <activity android:name=".app.ActivityDetail">
+
+        </activity>
 
         <activity android:name="com.facebook.FacebookActivity"
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
