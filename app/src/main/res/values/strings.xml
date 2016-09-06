@@ -2,4 +2,6 @@
     <string name="app_name">Imagine_space</string>
     <string name="title">Title</string>
     <string name="facebook_app_id">645183508991293</string>
+    <string name="share_img">URL Image to share Diplomado Apps</string>
+    <string name="txtShare">Share</string>
 </resources>

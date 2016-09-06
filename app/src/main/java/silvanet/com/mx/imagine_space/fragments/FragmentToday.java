@@ -36,6 +36,7 @@ public class FragmentToday extends Fragment{
     TextView date;
     @BindView(R.id.title) TextView title;
     @BindView(R.id.text) TextView text;
+    String img_url_share;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,6 +68,7 @@ public class FragmentToday extends Fragment{
                 date.setText(response.body().getDate().toString());
                 title.setText(response.body().getTitle().toString());
                 text.setText(response.body().getExplanation().toString());
+                img_url_share=response.body().getUrl();
 
             }
 
@@ -87,7 +89,8 @@ public class FragmentToday extends Fragment{
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.apod_menu_today_item:
-                shareText("Diplomado Aplicaciones móviles" + image);
+                //shareText("Diplomado Aplicaciones móviles " + img_url_share);
+                shareText(getResources().getText(R.string.share_img)+" " + img_url_share);
                 //Snackbar.make(getView(),"Share",Snackbar.LENGTH_SHORT).show();
                 return true;
             default:
@@ -100,6 +103,7 @@ public class FragmentToday extends Fragment{
         Intent shareIntent = new Intent(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
         shareIntent.putExtra(Intent.EXTRA_TEXT,text);
+        startActivity(Intent.createChooser(shareIntent,getResources().getText(R.string.txtShare)));
 
     }
 }

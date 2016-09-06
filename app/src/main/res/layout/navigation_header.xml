@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/image_navigation"
+        android:id="@+id/FB_image_usr"
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:src="@mipmap/ic_launcher"
@@ -15,12 +15,13 @@
         />
 
     <TextView
-        android:id="@+id/text_navigation"
+        android:id="@+id/FB_name_usr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/colorWhite"
         android:textStyle="bold"
-        tools:text="Luis Alfredo Silva"
+        android:background="@color/colorBlue"
+        tools:text="Probando Name: Luis Alfredo Silva"
         />
 
 </LinearLayout>

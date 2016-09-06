@@ -172,9 +172,11 @@ public class View_List_Recycled extends AppCompatActivity{
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
-                    SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.image_navigation);
+                    //SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.image_navigation);
+                    SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.FB_image_usr);
                     userImage.setImageURI("http://graph.facebook.com/"+object.getString("id")+"/picture?type=large");
-                    TextView userName = (TextView) findViewById(R.id.text_navigation);
+                    TextView userName = (TextView) findViewById(R.id.FB_name_usr);
+                    //TextView userName = (TextView) findViewById(R.id.text_navigation);
                     userName.setText(object.getString("name"));
 
 
