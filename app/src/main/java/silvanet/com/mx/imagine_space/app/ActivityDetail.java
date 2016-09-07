@@ -30,6 +30,7 @@ public class ActivityDetail extends AppCompatActivity {
     @BindView(R.id.item_date) TextView Date;
     @BindView(R.id.toolbar_detail)
     Toolbar Bar;
+    Photo photo;
 
     private AppDataSource favoritesDataSource;
 
@@ -45,7 +46,8 @@ public class ActivityDetail extends AppCompatActivity {
         getSupportActionBar().setHomeButtonEnabled(true);
 
         if(getIntent().getExtras()!=null) {
-            Photo photo = (Photo) getIntent().getExtras().getSerializable("photopar");
+            //Photo photo = (Photo) getIntent().getExtras().getSerializable("photopar");
+            photo = (Photo) getIntent().getExtras().getSerializable("photopar");
             Id.setText("Id: " + photo.getId().toString());
             Full_Name.setText("Full Name: " + photo.getCamera().getFullName());
             Image.setImageURI(photo.getImgSrc());
@@ -77,11 +79,9 @@ public class ActivityDetail extends AppCompatActivity {
         }
     }
     private void addFavorites() {
-        String cFull_Name = Full_Name.getText().toString();
-        //Image.setImageURI(photo.getImgSrc());
-        //String cImage = Image.toString();
-        String cImage = Date.getText().toString();
-        String cDate = Date.getText().toString();
+        String cFull_Name = photo.getCamera().getFullName();
+        String cImage = photo.getImgSrc();
+        String cDate = photo.getEarthDate();
         ModelFavorites modelFavorites = new ModelFavorites(0,cFull_Name,cImage,cDate);
         favoritesDataSource.saveFavorites(modelFavorites);
         Snackbar.make(findViewById(android.R.id.content),getResources().getText(R.string.AddFavorites),Snackbar.LENGTH_SHORT).show();
