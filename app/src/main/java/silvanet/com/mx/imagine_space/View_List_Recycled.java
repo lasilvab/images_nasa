@@ -85,7 +85,6 @@ public class View_List_Recycled extends AppCompatActivity{
             }
         */
 
-
         setSupportActionBar(toolbar);
         getFBUserInfo();
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener(){
@@ -101,7 +100,8 @@ public class View_List_Recycled extends AppCompatActivity{
                         getFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentListing()).commit();
                         break;
                     case R.id.favorite_item:
-                        Snackbar.make(findViewById(android.R.id.content),"Favorites",Snackbar.LENGTH_SHORT).show();
+                        //Snackbar.make(findViewById(android.R.id.content),"Favorites",Snackbar.LENGTH_SHORT).show();
+                        getFragmentManager().beginTransaction().replace(R.id.fragment_container,new FragmentFavorites()).commit();
                         break;
                 }
                 return false;

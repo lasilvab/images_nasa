@@ -16,11 +16,12 @@
 
     <TextView
         android:id="@+id/FB_name_usr"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:background="@color/colorBlue"
+        android:gravity="center"
         tools:text="Probando Name: Luis Alfredo Silva"
         />
 
