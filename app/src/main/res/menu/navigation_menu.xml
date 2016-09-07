@@ -5,19 +5,19 @@
         android:id="@+id/masr_rover_item"
         android:checkable="false"
         android:icon="@mipmap/ic_public"
-        android:title="Mars Rover Images"/>
+        android:title="@string/menu_listing"/>
 
     <item
         android:id="@+id/today_item"
         android:checkable="false"
         android:icon="@mipmap/ic_public"
-        android:title="Today APOD"/>
+        android:title="@string/menu_today"/>
 
     <item
         android:id="@+id/favorite_item"
         android:checkable="false"
         android:icon="@mipmap/ic_public"
-        android:title="Favorites"/>
+        android:title="@string/menu_favorites"/>
 </group>
 
 
