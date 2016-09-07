@@ -18,6 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import model.ModelFavorites;
+import silvanet.com.mx.imagine_space.ApodViewHolder.FavoritesAdapter;
 import silvanet.com.mx.imagine_space.FavoritesDetailsActivity;
 import silvanet.com.mx.imagine_space.R;
 import silvanet.com.mx.imagine_space.sql.AppDataSource;
@@ -26,9 +27,8 @@ import silvanet.com.mx.imagine_space.sql.AppDataSource;
  * Created by LuisAlfredoSilva on 06/09/2016.
  */
 public class FragmentFavorites extends Fragment {
-    @BindView(R.id.favoriteListing)
-    RecyclerView marsRoverListRecycler_Favorites;
-    String img;
+    @BindView(R.id.favoritesListing)
+    RecyclerView RoverList_Favorites;
     private AppDataSource appDataSource;
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -54,24 +54,27 @@ public class FragmentFavorites extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(),2);
         StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(10,StaggeredGridLayoutManager.VERTICAL);
 
-        marsRoverListRecycler_Favorites.setLayoutManager(gridLayoutManager);
-        final FavAdapter favAdapter = new FavAdapter();
-        favAdapter.setOnItemClickListener(new FavAdapter.OnItemClickListener() {
+        RoverList_Favorites.setLayoutManager(gridLayoutManager);
+
+        final FavoritesAdapter favoritesAdapter = new FavoritesAdapter();
+        favoritesAdapter.setOnItemClickListener(new FavoritesAdapter.OnItemClickListener() {
+
             @Override
-            public void onItemClick(FavoritesModel favoritesModel) {
-                Intent intent = new Intent(getActivity(),FavDetailsActivity.class);
-                intent.putExtra("favPhoto",favoritesModel);
+            public void onItemClick(ModelFavorites modelFavorites) {
+                Intent intent = new Intent(getActivity(),FavoritesDetailsActivity.class);
+                intent.putExtra("favPhoto",modelFavorites);
                 startActivity(intent);
             }
         });
+
         appDataSource = new AppDataSource(getActivity());
-        List<ModelFavorites> favoritesModelList = appDataSource.getAllFAV();
-        if(!favoritesModelList.isEmpty()) {
-            favAdapter.setMarsFav(favoritesModelList);
-            marsRoverListRecycler_Favorites.setAdapter(favAdapter);
+
+        List<ModelFavorites> modelFavoritesList = appDataSource.getAllFAV();
+        if(!modelFavoritesList.isEmpty()) {
+            favoritesAdapter.setMarsFav(modelFavoritesList);
+            RoverList_Favorites.setAdapter(favoritesAdapter);
         }else{
             Snackbar.make(getView(),getResources().getText(R.string.NoAddFavirites),Snackbar.LENGTH_SHORT).show();
-            //Snackbar.make(getView(),"No data added to favorites",Snackbar.LENGTH_SHORT).show();
         }
     }
 }

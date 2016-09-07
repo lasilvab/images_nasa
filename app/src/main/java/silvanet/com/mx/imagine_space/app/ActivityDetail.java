@@ -77,14 +77,13 @@ public class ActivityDetail extends AppCompatActivity {
         }
     }
     private void addFavorites() {
-        //ModelFavorites favoritesModel = (ModelFavorites) getIntent().getSerializableExtra("favPhoto");
         String cFull_Name = Full_Name.getText().toString();
-        //String cImage = Image.setImageURI().toString();
-        String cImage = Image.toString();
-        //String cImage =Image.setImageURI(favoritesModel.image_URI.toString());
+        //Image.setImageURI(photo.getImgSrc());
+        //String cImage = Image.toString();
+        String cImage = Date.getText().toString();
         String cDate = Date.getText().toString();
-        ModelFavorites model = new ModelFavorites(0,cFull_Name,cImage,cDate);
-        favoritesDataSource.saveFav(model);
+        ModelFavorites modelFavorites = new ModelFavorites(0,cFull_Name,cImage,cDate);
+        favoritesDataSource.saveFavorites(modelFavorites);
         Snackbar.make(findViewById(android.R.id.content),getResources().getText(R.string.AddFavorites),Snackbar.LENGTH_SHORT).show();
     }
 

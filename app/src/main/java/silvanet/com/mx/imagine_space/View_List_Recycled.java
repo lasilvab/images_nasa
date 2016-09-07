@@ -47,6 +47,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import silvanet.com.mx.imagine_space.ApodViewHolder.NasaApodAdapter;
 import silvanet.com.mx.imagine_space.app.ActivityDetail;
+import silvanet.com.mx.imagine_space.fragments.FragmentFavorites;
 import silvanet.com.mx.imagine_space.fragments.FragmentListing;
 import silvanet.com.mx.imagine_space.fragments.FragmentToday;
 
@@ -172,11 +173,9 @@ public class View_List_Recycled extends AppCompatActivity{
             @Override
             public void onCompleted(JSONObject object, GraphResponse response) {
                 try {
-                    //SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.image_navigation);
                     SimpleDraweeView userImage =(SimpleDraweeView)findViewById(R.id.FB_image_usr);
                     userImage.setImageURI("http://graph.facebook.com/"+object.getString("id")+"/picture?type=large");
                     TextView userName = (TextView) findViewById(R.id.FB_name_usr);
-                    //TextView userName = (TextView) findViewById(R.id.text_navigation);
                     userName.setText(object.getString("name"));
 
 

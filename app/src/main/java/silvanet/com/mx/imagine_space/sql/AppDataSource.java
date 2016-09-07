@@ -23,7 +23,7 @@ public class AppDataSource {
     }
 
     //Insertar
-    public void saveFav(ModelFavorites modelFavorites){
+    public void saveFavorites(ModelFavorites modelFavorites){
         ContentValues contentValues = new ContentValues();
         contentValues.put(MySqlLiteHelper.COLUMN_FAVORITES_FULLNAME,modelFavorites.full_name);
         contentValues.put(MySqlLiteHelper.COLUMN_FAVORITES_IMAGEURI,modelFavorites.image_URI);
@@ -31,13 +31,13 @@ public class AppDataSource {
         db.insert(MySqlLiteHelper.TABLE_FAVORITES_NAME,null,contentValues);
     }
     //Borrar
-    public void deleteFav(ModelFavorites modelFavorites){
+    public void deleteFavorites(ModelFavorites modelFavorites){
         if(modelFavorites!=null){
             db.delete(MySqlLiteHelper.TABLE_FAVORITES_NAME,MySqlLiteHelper.COLUMN_FAVORITES_ID+"=?",new String[]{String.valueOf(modelFavorites.id)});
         }
     }
     //Actualizar
-    public void updateFav(ModelFavorites modelFavorites){
+    public void updateFavorites(ModelFavorites modelFavorites){
         ContentValues contentValues = new ContentValues();
         contentValues.put(MySqlLiteHelper.COLUMN_FAVORITES_ID,modelFavorites.id);
         contentValues.put(MySqlLiteHelper.COLUMN_FAVORITES_FULLNAME,modelFavorites.full_name);
@@ -54,8 +54,8 @@ public class AppDataSource {
             String FAVFullName = cursor.getString(cursor.getColumnIndexOrThrow(MySqlLiteHelper.COLUMN_FAVORITES_FULLNAME));
             String FAVImageURI = cursor.getString(cursor.getColumnIndexOrThrow(MySqlLiteHelper.COLUMN_FAVORITES_IMAGEURI));
             String FAVDate = cursor.getString(cursor.getColumnIndexOrThrow(MySqlLiteHelper.COLUMN_FAVORITES_DATE));
-            ModelFavorites favoritesModel = new ModelFavorites(id,FAVFullName,FAVImageURI,FAVDate);
-            modelFAVList.add(favoritesModel);
+            ModelFavorites modelFavorites = new ModelFavorites(id,FAVFullName,FAVImageURI,FAVDate);
+            modelFAVList.add(modelFavorites);
         }
         return modelFAVList;
     }

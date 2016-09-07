@@ -38,12 +38,12 @@ public class FavoritesDetailsActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(true);
         if(getIntent().getExtras()!=null) {
-            ModelFavorites favoritesModel = (ModelFavorites) getIntent().getSerializableExtra("favPhoto");
+            ModelFavorites modelFavorites = (ModelFavorites) getIntent().getSerializableExtra("favPhoto");
 
-            Id.setText("Id: " + favoritesModel.id);
-            Full_Name.setText("Full Name: " + favoritesModel.full_name.toString());
-            Image.setImageURI(favoritesModel.image_URI.toString());
-            Date.setText("Date: " + favoritesModel.date.toString());
+            Id.setText("Id: " + modelFavorites.id);
+            Full_Name.setText("Full Name: " + modelFavorites.full_name.toString());
+            Image.setImageURI(modelFavorites.image_URI.toString());
+            Date.setText("Date: " + modelFavorites.date.toString());
         }else{
             Toast.makeText(getApplicationContext(),getResources().getText(R.string.error_data),Toast.LENGTH_SHORT).show();
         }
