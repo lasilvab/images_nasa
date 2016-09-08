@@ -4,7 +4,7 @@
     <string name="menu_listing">Mars Rover Images</string>
     <string name="menu_today">Today APOD</string>
     <string name="menu_favorites">Favorites</string>
-    <string name="facebook_app_id">645183508991293</string>
+    <string name="facebook_app_id" translatable="false">645183508991293</string>
     <string name="share_img">URL Image to share Diplomado Apps</string>
     <string name="txtShare">Share</string>
     <string name="error_data">Error to loading Data...!</string>

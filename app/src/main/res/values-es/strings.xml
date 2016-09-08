@@ -4,7 +4,6 @@
     <string name="menu_listing">Imágenes de Marte Rover cámaras</string>
     <string name="menu_today">Imagen astronómica de hoy</string>
     <string name="menu_favorites">Favoritos</string>
-    <string name="facebook_app_id">645183508991293</string>
     <string name="share_img">URL de imágen para compartir Diplomado Apps</string>
     <string name="txtShare">Compartir</string>
     <string name="error_data">Error al cargar datos...!</string>
