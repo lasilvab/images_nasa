@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Imagine_space</string>
+    <string name="app_name">Imagine Space</string>
     <string name="title">Title</string>
     <string name="menu_listing">Mars Rover Images</string>
     <string name="menu_today">Today APOD</string>
